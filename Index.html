@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../NEW UNIEATS/style0.css">
+    <title>Unieats</title>
+    <link href='https://fonts.googleapis.com/css?family=Spartan' rel='stylesheet'>
+     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.0.0/css/all.css">
+     <script type="text/javascript" src="script.js"></script>
+     <style>
+        </style>
+    </head>
+
+    
+<body>
+   <section id="header" style="display:flex">
+    <a href="Index.html"><img src="../logo.png" class="logo" alt="logo" style="width: 80px;"></a>
+    
+    <div>
+        <ul id="navbar">   
+            <li><a class="active" href="Index.html">Home</a></li>
+            <li><a href="../Unieats/Order.html">Restaurants</a></li>
+        </ul>
+    </div>
+    <div id="mobile">
+        <i id="bar" class="fas fa-outdent"></i>
+    </div>
+</section>
+
+<section id="hero" class="section-m1">
+    <h3>Hungry?!</h3>
+    <a href="Order.html"><button class="normal">Order Now!</button></a>
+</section>
+<section id="product1" class="section-p1" style="text-align: center;">
+<section id="banner" class="section-m1">
+    <h3>Focus on the Food!</h3>
+    <a href="Blog.html"><button class="normal">Explore Blog</button></a>
+    
+</section>
+</section>
+<footer class="section-p1">
+            <div class="col">
+                <div class="copyright">
+                   <center> <p> Copyright © 2022 Unieats All rights reserved</p></center>
+                </div>
+            </div>
+    </div>
+    </footer>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Now</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            font-family: 'Spartan', Arial, sans-serif;
+            font-size: 18px;
+        }
+
+        /* Typography */
+        h2 {
+            color: rgb(238, 100, 8);
+            font-size: 22px;
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 10px 0;
+            text-align: center;
+        }
+        h3 {
+            color: rgb(238, 100, 8);
+            font-size: 60px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        p {
+            font-size: 14px;
+            color: black;
+            text-align: center;
+        }
+
+        /* Header */
+        #header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 15px;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        #navbar {
+            display: flex;
+            list-style: none;
+        }
+
+        #navbar li {
+            padding: 0 15px;
+        }
+
+        #navbar li a {
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            color: black;
+            transition: 0.3s;
+        }
+
+        #navbar li a:hover {
+            color: orange;
+        }
+
+        /* Logo */
+        .logo {
+            height: 70px;  /* Increased height */
+            width: auto;   /* Maintain aspect ratio */
+        }
+
+        /* Hamburger Menu */
+        #mobile-menu {
+            display: none; /* Hidden by default */
+            cursor: pointer;
+            font-size: 24px;
+        }
+
+        #navbar-dropdown {
+            display: none;
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            background: white;
+            width: 200px;
+            flex-direction: column;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        #navbar-dropdown li {
+            padding: 10px 15px;
+            border-bottom: 1px solid #eee;
+            text-decoration: none;
+        }
+
+        #navbar-dropdown li:last-child {
+            border-bottom: none;
+            text-decoration: none;
+        }
+
+        #navbar-dropdown li a {
+            text-decoration: none;
+            color: black;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        #navbar-dropdown li a:hover {
+            color: orange;
+        }
+
+        #hero {
+            background-image: url("../images/M1.png");
+            height: 85vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border: 7px solid rgb(7, 7, 7);
+            background-size: cover;
+            background-position: center;
+            background-color: black;
+        }
+
+        /* Buttons */
+        button.normal {
+            font-size: 14px;
+            font-weight: 600;
+            padding: 15px 30px;
+            margin-top: 20px;
+            color: black;
+            background-color: white;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        button.normal:hover {
+            background-color: rgb(1, 71, 73);
+            color: lightgrey;
+        }
+
+        /* Gallery Section (Collage Grid) */
+        #gallery {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-grid img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Food Category Section */
+        #categories {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .category-icons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .category-icons .category-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid #ffbc00;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .category-icons .category-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .category-icons .category-icon:hover {
+            border-color: #ff9a00;
+        }
+
+        /* Footer */
+        footer {
+            background-color: lightgray;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer a {
+            color: rgb(49, 49, 49);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: gray;
+        }
+    </style>
+    <script>
+        function toggleMenu() {
+            const navbar = document.getElementById("navbar");
+            navbar.classList.toggle("active"); // Toggle visibility of the navbar
+        }
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <section id="header">
+        <a href="unieats.html"><img src="images/logo.png" class="logo" alt="logo"></a>
+        <div id="mobile-menu" onclick="toggleMenu()">☰</div>
+        <ul id="navbar">
+            <li><a href="unieats.html">Home</a></li>
+            <li><a href="About.html">About Us</a></li>
+        </ul>
+        <ul id="navbar-dropdown">
+            <li><a href="unieats.html">Home</a></li>
+            <li><a href="About.html">About Us</a></li>
+        </ul>
+    </section>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <h3>Hungry?!</h3>
+        <a href="#restaurant"><button class="normal">Order Now!</button></a>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery">
+        <h2>Gallery</h2>
+        <div class="gallery-grid">
+            <!-- Replace with your own image links -->
+            <img src="your-image-link1.jpg" alt="Image 1">
+            <img src="your-image-link2.jpg" alt="Image 2">
+            <img src="your-image-link3.jpg" alt="Image 3">
+            <img src="your-image-link4.jpg" alt="Image 4">
+            <img src="your-image-link5.jpg" alt="Image 5">
+            <img src="your-image-link6.jpg" alt="Image 6">
+            <img src="your-image-link7.jpg" alt="Image 7">
+            <img src="your-image-link8.jpg" alt="Image 8">
+        </div>
+    </section>
+
+    <!-- Food Categories Section -->
+    <section id="categories">
+        <h2>Food Categories</h2>
+        <div class="category-icons">
+            <!-- Replace with your own image links -->
+            <div class="category-icon"><img src="pizza-icon.jpg" alt="Pizza"></div>
+            <div class="category-icon"><img src="burger-icon.jpg" alt="Burger"></div>
+            <div class="category-icon"><img src="fries-icon.jpg" alt="Fries"></div>
+            <div class="category-icon"><img src="maggi-icon.jpg" alt="Maggi"></div>
+            <div class="category-icon"><img src="north-indian-icon.jpg" alt="North Indian"></div>
+            <div class="category-icon"><img src="south-indian-icon.jpg" alt="South Indian"></div>
+            <div class="category-icon"><img src="desserts-icon.jpg" alt="Desserts"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>University Links</p>
+        <a href="https://jaipur.manipal.edu/">University Website</a> |
+        <a href="https://dms.jaipur.manipal.edu/loginForm.aspx">SLCM Portal</a>
+    </footer>
+
+</body>
+</html>

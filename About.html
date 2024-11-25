@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.0.0/css/all.css">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            font-family: 'Spartan', Arial, sans-serif;
+        }
+/* Header */
+#header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 15px;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        #navbar {
+            display: flex;
+            list-style: none;
+        }
+
+        #navbar li {
+            padding: 0 15px;
+        }
+
+        #navbar li a {
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            color: black;
+            transition: 0.3s;
+        }
+
+        #navbar li a:hover {
+            color: orange;
+        }
+
+        /* Logo */
+        .logo {
+            height: 70px;  /* Increased height */
+            width: auto;   /* Maintain aspect ratio */
+        }
+
+
+        /* Hamburger Menu */
+        #mobile-menu {
+            display: none; /* Hidden by default */
+            cursor: pointer;
+            font-size: 24px;
+        }
+
+        #navbar-dropdown {
+            display: none;
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            background: white;
+            width: 200px;
+            flex-direction: column;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        #navbar-dropdown li {
+            padding: 10px 15px;
+            border-bottom: 1px solid #eee;
+            text-decoration: none;
+        }
+
+        #navbar-dropdown li:last-child {
+            border-bottom: none;
+            text-decoration: none;
+        }
+
+        #navbar-dropdown li a {
+            text-decoration: none;
+            color: black;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        #navbar-dropdown li a:hover {
+            color: orange;
+        }
+
+        /* Responsive Rules */
+        @media (max-width: 768px) {
+            #navbar {
+                display: none; /* Hide default navbar on small screens */
+            }
+
+            #mobile-menu {
+                display: block; /* Show hamburger menu */
+            }
+
+            #navbar-dropdown.active {
+                display: flex;
+            }
+        }
+    </style>
+    <script>
+        function toggleMenu() {
+            const dropdown = document.getElementById('navbar-dropdown');
+            dropdown.classList.toggle('active');
+        }
+    </script>
+    <title><img src="../Unieatss/logo.png" alt="logo"></title>
+</head>
+<body>
+    <!-- Header -->
+    <section id="header">
+        <a href="unieats.html"><img src="images/logo.png" class="logo" alt="logo"></a>
+        <div id="mobile-menu" onclick="toggleMenu()">☰</div>
+        <ul id="navbar">
+            <li><a href="unieats.html">Home</a></li>
+            <li><a href="About.html">About Us</a></li>
+        </ul>
+        <ul id="navbar-dropdown">
+            <li><a href="unieats.html">Home</a></li>
+            <li><a href="About.html">About Us</a></li>
+        </ul>
+    </section>
+    <!-- Image Section -->
+<div class="row">
+    <img src="images/abt1.png" alt="About Image 1">
+    <img src="images/abt2.png" alt="About Image 2">
+</div>
+
+<!-- Footer -->
+<footer class="section-p1">
+    <div class="col">
+        <p1>Follow us</p1>
+        <div class="icon">
+            <i class="fab fa-instagram"></i>
+        </div>
+    </div>
+    <div class="col">
+        <p1>About</p1>
+        <a href="unieats.html">Order Now</a>
+        <a href="About.html">About Us</a>
+        <a href="#">Restaurant Mobile Numbers</a>
+    </div>
+    <div class="col">
+        <p1>University Links</p1>
+        <a href="https://jaipur.manipal.edu/">University Website</a>
+        <a href="https://dms.jaipur.manipal.edu/loginForm.aspx">SLCM Portal</a>
+    </div>
+    <div class="col copyright">
+        <p>Copyright © 2022 Unieats. All rights reserved.</p>
+    </div>
+</footer>
+</body>
+</html>

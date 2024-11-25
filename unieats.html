@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Now</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            font-family: 'Spartan', Arial, sans-serif;
+            font-size: 18px;
+        }
+
+        /* Typography */
+        h2 {
+            color: rgb(238, 100, 8);
+            font-size: 22px;
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 10px 0;
+            text-align: center;
+        }
+        h3 {
+            color: rgb(238, 100, 8);
+            font-size: 90px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            position: absolute;
+                left:40px; 
+                top: 50%; 
+                transform: translateY(-50%);
+        }
+
+        p {
+            font-size: 14px;
+            color: black;
+            text-align: center;
+        }
+
+        /* Header */
+        #header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 15px;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        #navbar {
+            display: flex;
+            list-style: none;
+        }
+
+        #navbar li {
+            padding: 0 15px;
+        }
+
+        #navbar li a {
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            color: black;
+            transition: 0.3s;
+        }
+
+        #navbar li a:hover {
+            color: orange;
+        }
+
+        /* Logo */
+        .logo {
+            height: 70px;  /* Increased height */
+            width: auto;   /* Maintain aspect ratio */
+        }
+
+
+/* Hamburger Menu */
+#mobile-menu {
+    display: none; /* Hidden by default */
+    cursor: pointer;
+    font-size: 24px;
+}
+
+/* Dropdown menu (hidden by default) */
+#navbar-dropdown {
+    display: none;
+    flex-direction: column;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: #444;
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    z-index: 100;
+    width: 150px;
+    border-radius: 8px;
+}
+
+#navbar-dropdown li {
+    margin: 10px 0;
+    text-align: center;
+}
+
+#navbar-dropdown a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 15px;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+#navbar-dropdown a:hover {
+    background-color: #555;
+}
+
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    #navbar {
+        display: none; /* Hide main navbar */
+    }
+
+    #mobile-menu {
+        display: block; /* Show menu icon */
+    }
+
+    #navbar-dropdown {
+        display: none; /* Keep dropdown hidden by default */
+    }
+}
+/* Animation for NAVBAR  dropdown */
+/* Animation for dropdown */
+#navbar-dropdown.active {
+    display: flex;
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+    #search-bar {
+        display: flex; /* Ensure the search bar shows on tablets */
+        margin-left: auto; /* Push it to the right of the navbar */
+    }
+}
+/* Search Bar inside Navbar */
+#search-bar {
+    display: flex;
+    align-items: center;  /* Vertically center the search input and button */
+    flex-grow: 1;  /* Allow the search bar to take up space between the navbar items */
+    justify-content: center;  /* Center the search bar */
+    margin-left: 0;
+    margin-right: 0;
+}
+
+#search-input {
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    width: 250px;  /* Adjust the width for visibility */
+    height: 35px;  /* Align vertically with navbar links */
+}
+
+#search-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin-left: 8px;
+    padding: 8px;
+    height: 35px;  /* Align vertically with navbar links */
+}
+
+/* Search button icon (styled with CSS) */
+#search-btn .search-icon {
+    width: 20px;
+    height: 20px;
+    background-color: #444;
+    mask: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 width=%2224%22 height=%2224%22%3E%3Cpath d=%22M0 0h24v24H0z%22 fill=%22none%22/%3E%3Cpath d=%22M10 2C5.58 2 2 5.58 2 10s3.58 8 8 8c1.66 0 3.16-.51 4.41-1.38l5.6 5.6 1.42-1.42-5.6-5.6C17.49 13.16 18 11.66 18 10c0-4.42-3.58-8-8-8zm0 14c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z%22/%3E%3C/svg%3E') no-repeat center center;
+    background-size: contain;
+}
+/* Search Results Dropdown */
+#search-results {
+            position: absolute;
+            top: 45px;
+            left: 0;
+            width: 100%;
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            background-color: white;
+            border-radius: 5px;
+            display: none;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+
+        #search-results div {
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #search-results div:hover {
+            background-color: #f9f9f9;
+        }
+/* Responsive SEARCH BAR styles for tablets and larger devices */
+/* Responsive styles for tablets and larger devices */
+@media (min-width: 768px) and (max-width: 1024px) {
+    #search-bar {
+        display: flex;
+        justify-content: center;
+        flex-grow: 1;
+    }
+
+    #search-input {
+        width: 150px; /* Adjust search input width for tablets */
+    }
+
+    #mobile-menu {
+        display: none; /* Hide mobile menu on tablets */
+    }
+}
+
+/* Responsive styles for mobile (max-width 767px) */
+@media (max-width: 767px) {
+    #navbar {
+        display: none; /* Hide navbar on mobile */
+    }
+
+    #mobile-menu {
+        display: block; /* Show mobile menu */
+    }
+
+    #navbar-dropdown {
+        display: none; /* Hide dropdown menu by default */
+    }
+
+    #search-bar {
+        display: flex;
+        justify-content: center;
+        margin-left: 10px;
+    }
+
+    #search-input {
+        width: 120px;  /* Adjust search input width for mobile */
+    }
+}
+
+
+        #hero {
+        background-image: url("../images/M2.png"); /* Background image */
+        display: flex;
+        flex-direction: column; /* Stack elements vertically */
+        justify-content: center; /* Center elements vertically */
+        align-items: center; /* Center elements horizontally */
+        text-align: center; /* Center text */
+        height: 85vh; /* Default height for large screens */
+        width: 100%; /* Full-width section */
+        border: 7px solid rgb(7, 7, 7);
+        background-size: cover; /* Cover the section while keeping proportions */
+        background-position: center center; /* Center the image */
+        background-repeat: no-repeat; /* Avoid repeating the image */
+}
+
+        /* Buttons */
+            button.normal {
+                font-size: 14px;
+                font-weight: 600;
+                padding: 15px 30px;
+                margin-top: 20px;
+                color: black;
+                background-color: white;
+                border-radius: 4px;
+                border: none;
+                cursor: pointer;
+                outline: none;
+                transition: 0.2s;
+                position: absolute;
+                left:40px; 
+                top: 60%; 
+                transform: translateY(-50%);
+            
+
+}
+
+        button.normal:hover {
+            background-color: rgb(1, 71, 73);
+            color: lightgrey;
+        }
+
+  /* Responsive Design for Hero Section */
+@media (max-width: 1024px) {
+    #hero {
+        height: 75vh; /* Slightly smaller height for tablets */
+    }
+
+    #hero h3 {
+        font-size: 48px; /* Adjust font size */
+    }
+
+    #hero button {
+        font-size: 16px; /* Reduce button font size */
+        padding: 12px 25px; /* Adjust padding */
+    }
+}
+
+@media (max-width: 768px) {
+    #hero {
+        height: 70vh; /* Adjust height for smaller tablets */
+        padding: 0 10px; /* Add padding for proper spacing */
+    }
+
+    #hero h3 {
+        font-size: 36px; /* Reduce font size for smaller screens */
+    }
+
+    #hero button {
+        font-size: 14px; /* Smaller button text */
+        padding: 10px 20px; /* Adjust button padding */
+    }
+}
+
+@media (max-width: 480px) {
+    #hero {
+        height: 60vh; /* Minimum height for mobile devices */
+        padding: 0 15px; /* Add padding for proper spacing */
+    }
+
+    #hero h3 {
+        font-size: 28px; /* Compact font size for mobile */
+        margin-bottom: 10px; /* Reduce space below heading */
+    }
+
+    #hero button {
+        font-size: 12px; /* Small button font */
+        padding: 8px 16px; /* Adjust button padding */
+    }
+}
+
+
+
+/* Gallery Section (Collage Grid) */
+#gallery {
+            padding: 20px;
+        }
+
+        #gallery h2 {
+            margin-bottom: 20px;
+        }
+
+        .container {
+            position: relative;
+        }
+
+        .mySlides {
+            display: none;
+        }
+
+        .prev,
+        .next {
+            cursor: pointer;
+            position: absolute;
+            top: 40%;
+            padding: 16px;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .caption-container {
+            text-align: center;
+            background-color: #222;
+            color: white;
+            padding: 2px 16px;
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .column {
+            float: left;
+            width: 20%;
+        }
+
+        .demo {
+            cursor: pointer;
+            opacity: 0.6;
+        }
+
+        .active,
+        .demo:hover {
+            opacity: 1;
+        }
+
+        /* Footer */
+        footer {
+            background-color: lightgray;
+            padding: 20px;
+            text-align: center;
+        }
+        /* Food Category Section */
+#categories {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.category-icons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.category-icons .category-icon {
+    width: 120px; /* Increased size */
+    height: 120px; /* Increased size */
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid #ffbc00;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.category-icons .category-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.category-icons .category-icon:hover {
+    border-color: #ff9a00;
+}
+
+        /* Image List Styling */
+        .image-list-small {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 20px;
+            padding: 80px;
+            list-style: none;
+        }
+
+        .image-list-small li {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: white;
+        }
+
+        .image-list-small li a {
+            display: block;
+            width: 100%;
+            height: 150px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .details {
+            padding: 10px;
+        }
+
+        .details h2 {
+            font-size: 18px;
+            margin: 5px 0;
+        }
+
+        .details p {
+            font-size: 15px;
+            color: gray;
+        }
+
+        /* Footer */
+        footer {
+            background-color: lightgray;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer a {
+            color: rgb(49, 49, 49);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: rgb(255, 255, 255);
+            text-decoration: underline;
+        }
+
+        footer p
+        {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            color: rgb(238, 100, 8);
+            font-size: 22px;
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            
+        }
+        /* Media Queries for Responsiveness */
+        @media (max-width: 1024px) {
+            #mobile-menu {
+                display: block; /* Show menu icon on tablets and mobile */
+            }
+
+            #navbar {
+                display: none; /* Hide navbar on small screens */
+                flex-direction: column;
+                position: fixed;
+                top: 0;
+                right: -100%;
+                background-color: white;
+                height: 100%;
+                width: 200px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                transition: right 0.3s;
+            }
+
+            #navbar.active {
+                right: 0; /* Show navbar when active */
+            }
+
+            #navbar li {
+                margin: 20px 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                height: 40px;
+            }
+
+            .image-list-small {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                font-size: 16px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+            p {
+                font-size: 12px;
+            }
+
+            .details h2 {
+                font-size: 16px;
+            }
+
+            .image-list-small {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            }
+        }
+        .sparkle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(246, 96, 27, 0.7), rgba(13, 14, 14, 0));
+    opacity: 1;
+    pointer-events: none;
+    animation: sparkle-animation 0.2s forwards;
+}
+
+@keyframes sparkle-animation {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+        
+    </style>
+      <script>
+      // togggle menu
+      function toggleMenu() {
+    var dropdown = document.getElementById('navbar-dropdown');
+    dropdown.classList.toggle('active'); // Toggle the 'active' class to show/hide the dropdown
+}
+
+
+        document.addEventListener('mousemove', function(event) {
+    const sparkle = document.createElement('div');
+    sparkle.classList.add('sparkle');
+    
+    // Set the position of the sparkle to the cursor's coordinates
+    sparkle.style.left = `${event.pageX - 5}px`; // Offset by 5px for center alignment
+    sparkle.style.top = `${event.pageY - 5}px`;  // Offset by 5px for center alignment
+
+    // Append the sparkle to the body
+    document.body.appendChild(sparkle);
+
+    // Remove the sparkle after animation ends
+    setTimeout(() => {
+        sparkle.remove();
+    }, 1000); // Duration of the sparkle animation
+});
+
+
+const recommendations = [
+            { name: "Pizza", category: "Italian" },
+            { name: "Burger", category: "Fast Food" },
+            { name: "North Indian Thali", category: "Indian" },
+            { name: "South Indian Dosa", category: "Indian" },
+            { name: "Chocolate Cake", category: "Desserts" },
+            { name: "Ice Cream", category: "Desserts" },
+        ];
+
+        const searchInput = document.getElementById("search-input");
+        const searchResults = document.getElementById("search-results");
+
+        // Function to filter recommendations based on search query
+        function filterRecommendations(query) {
+            return recommendations.filter(item => 
+                item.name.toLowerCase().includes(query.toLowerCase())
+            );
+        }
+
+        // Function to display recommendations
+        function displayResults(results) {
+            searchResults.innerHTML = ""; // Clear previous results
+            if (results.length === 0) {
+                searchResults.style.display = "none";
+                return;
+            }
+            results.forEach(result => {
+                const div = document.createElement("div");
+                div.textContent = `${result.name} (${result.category})`;
+                searchResults.appendChild(div);
+                div.addEventListener("click", () => {
+                    alert(`You selected: ${result.name}`);
+                    searchResults.style.display = "none";
+                });
+            });
+            searchResults.style.display = "block";
+        }
+
+        // Event listeners for search input
+        searchInput.addEventListener("input", () => {
+            const query = searchInput.value.trim();
+            if (query) {
+                const results = filterRecommendations(query);
+                displayResults(results);
+            } else {
+                searchResults.style.display = "none";
+            }
+        });
+
+        // Hide results dropdown on click outside
+        document.addEventListener("click", (event) => {
+            if (!searchResults.contains(event.target) && event.target !== searchInput) {
+                searchResults.style.display = "none";
+            }
+        });
+
+        // Search bar DYNAMIC FILTERING page redirect
+        function redirectToSearch() {
+    window.location.href = "search.html"; // Redirects to the search.html page
+}
+
+</script>
+
+    </script>
+     <title><img src="../Unieatss/logo.png" alt="logo"></title>
+</head>
+<body>
+    <div class="sparkle-container"></div>
+    <!-- Header -->
+    <section id="header">
+        <a href="unieats.html">
+            <img src="images/logo.png" class="logo" alt="logo">
+        </a>
+        <div id="mobile-menu" onclick="toggleMenu()">☰</div>
+        <ul id="navbar">
+            <!-- Search Bar inside Navbar -->
+            <li id="search-bar">
+                <input 
+                    type="text" 
+                    id="search-input" 
+                    placeholder="Search..." 
+                    onclick="redirectToSearch()">
+            </li>
+            <li><a href="unieats.html">Home</a></li>
+            <li><a href="About.html">About Us</a></li>
+        </ul>
+        <ul id="navbar-dropdown">
+            <li><a href="unieats.html">Home</a></li>
+            <li><a href="About.html">About Us</a></li>
+        </ul>
+    </section>
+    
+    
+    <section id="hero">      
+        <h3>UNIeats</h3>
+        <a href="#restaurant"><button class="normal">Order Now!</button></a> 
+    </section>
+
+
+<!-- Food Categories Section -->
+<section id="categories">
+    <h2>Food Categories</h2>
+    <div class="category-icons">
+        <!-- Replace with your own image links -->
+        <div class="category-icon"><img src="../images/3.jpg" alt="Pizza"></div>
+        <div class="category-icon"><img src="../images/2.jpg" alt="Burger"></div>
+        <div class="category-icon"><img src="../images/1.jpg" alt="North Indian"></div>
+        <div class="category-icon"><img src="../images/4.jpg" alt="South Indian"></div>
+        <div class="category-icon"><img src="../images/5.jpg" alt="Desserts"></div>
+    </div>
+</section>
+
+
+
+
+    <section id="restaurant">
+        <h2>Hostel Restaurants</h2>
+          <!-- Image List (All Restaurants) -->
+    <ul class="image-list-small">
+        <li>
+            <a href="ito.html" style="background-image: url('images/tio.png');"></a>
+            <div class="details">
+                <h2>The Italian Oven</h2>
+                <p>G1 Block</p>
+            </div>
+        </li>
+
+        <li>
+            <a href="lgl.html" style="background-image: url('images/lgl.png');"></a>
+            <div class="details">
+                <h2>Let's go Live</h2>
+                <p>G2 Block</p>
+            </div>
+        </li>
+        <li>
+            <a href="nes.html" style="background-image: url('images/nsc.jpg');"></a>
+            <div class="details">
+                <h2>Nescafe</h2>
+                <p>G3 Block</p>
+            </div>
+        </li>
+        <li>
+            <a href="tea.html" style="background-image: url('images/tt.png');"></a>
+            <div class="details">
+                <h2>Tea Tradition</h2>
+                <p>B2 Block</p>
+            </div>
+        </li>
+        <li>
+            <a href="#" style="background-image: url('images/tb.png');"></a>
+            <div class="details">
+                <h2>Health Bar</h2>
+                <p>Quess 1st Floor</p>
+            </div>
+        </li>
+        <li>
+            <a href="#" style="background-image: url('images/ckt.png');"></a>
+            <div class="details">
+                <h2>Chatkaara</h2>
+                <p>B1 Block</p>
+            </div>
+        </li>
+        <li>
+            <a href="#" style="background-image: url('images/dss.png');"></a>
+            <div class="details">
+                <h2>Dev Sweets & Snacks</h2>
+                <p>G3 Block</p>
+            </div>
+        </li>
+    </ul>
+
+    </section>
+   
+    <!-- Footer -->
+    <footer>
+        <p>University Links</p>
+        <a href="https://jaipur.manipal.edu/">University Website</a> | 
+        <a href="https://dms.jaipur.manipal.edu/loginForm.aspx">SLCM Portal</a>
+    </footer>
+</body>
+</html>
+

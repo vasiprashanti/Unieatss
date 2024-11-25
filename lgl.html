@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Italian Oven</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: white;
+  color: black;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+/* Header */
+#header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 15px;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        #navbar {
+            display: flex;
+            list-style: none;
+        }
+
+        #navbar li {
+            padding: 0 15px;
+        }
+
+        #navbar li a {
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            color: black;
+            transition: 0.3s;
+        }
+
+        #navbar li a:hover {
+            color: orange;
+        }
+
+        /* Logo */
+        .logo {
+            height: 70px;  /* Increased height */
+            width: auto;   /* Maintain aspect ratio */
+        }
+
+
+/* Hamburger Menu */
+#mobile-menu {
+    display: none; /* Hidden by default */
+    cursor: pointer;
+    font-size: 24px;
+}
+
+/* Dropdown menu (hidden by default) */
+#navbar-dropdown {
+    display: none;
+    flex-direction: column;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: #444;
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    z-index: 100;
+    width: 150px;
+    border-radius: 8px;
+}
+
+#navbar-dropdown li {
+    margin: 10px 0;
+    text-align: center;
+}
+
+#navbar-dropdown a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 15px;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+#navbar-dropdown a:hover {
+    background-color: #555;
+}
+
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    #navbar {
+        display: none; /* Hide main navbar */
+    }
+
+    #mobile-menu {
+        display: block; /* Show menu icon */
+    }
+
+    #navbar-dropdown {
+        display: none; /* Keep dropdown hidden by default */
+    }
+}
+/* Animation for NAVBAR  dropdown */
+/* Animation for dropdown */
+#navbar-dropdown.active {
+    display: flex;
+}
+/* Create a column layout with Flexbox */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+}
+
+/* Left column (menu) */
+.left {
+  flex: 100%;
+  padding: 15px 0;
+  background-color: white;
+  width: 80%;
+  margin: 0 auto;
+}
+
+/* Header styles */
+.left h2 {
+  padding: 10px;
+  margin: 0;
+  background-color: #f2f2f2; /* Light grey */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: black;
+}
+.left h1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin: none;
+  background-color: #ffae7f; /* Light grey */
+  color: black;
+  font-size: 24px; /* Adjust font size as needed */
+}
+
+/* Style the search box */
+#mySearch {
+  width: 100%;
+  font-size: 18px;
+  padding: 11px;
+  background-color: white;
+  color: black;
+  margin: none;
+  border: 1px #444;
+}
+
+/* Style the navigation menu inside the left column */
+#myMenu {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+#myMenu li a {
+  padding: 12px;
+  text-decoration: none;
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  background-color: white;
+  cursor: pointer;
+}
+
+#myMenu li a:hover {
+  background-color: #006400; /* Dark emerald green for hover */
+  color: white;
+}
+
+/* Style for quantity buttons */
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.quantity-controls button {
+  padding: 4px;
+  background-color: #f2f2f2;
+  border: 1px solid #ddd;
+  color: black;
+  cursor: pointer;
+}
+
+.quantity-controls button:hover {
+  background-color: #006400;
+  color: white;
+}
+
+.quantity-controls span {
+  font-weight: bold;
+}
+
+/* Section heading for menu categories */
+.category-heading {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  padding: 8px;
+  background-color: #f2f2f2; /* Light grey */
+  color: black;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: left;
+}
+
+/* Cart styles */
+#cart {
+  width: 80%;
+  margin: 20px auto;
+  padding: 15px;
+  border: 1px solid #ddd;
+  background-color: #f2f2f2;
+  align-items: right;
+}
+
+#cart h3 {
+  margin: 0 0 10px;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+</style>
+</head>
+<body>
+    <section id="header">
+        <a href="unieats.html"><img src="images/logo.png" class="logo" alt="logo"></a>
+        <div id="mobile-menu" onclick="toggleMenu()">☰</div>
+        <ul id="navbar">
+            <li><a href="unieats.html">Home</a></li>
+            <li><a href="About.html">About Us</a></li>
+        </ul>
+        <ul id="navbar-dropdown">
+            <li><a href="unieats.html">Home</a></li>
+            <li><a href="About.html">About Us</a></li>
+        </ul>
+    </section>
+    <section id="#Italian Oven">
+<div class="row">
+  <div class="left">
+    <h1>
+      Lets Go Live
+      <span class="cart-icon" onclick="toggleCart()">🛒</span>
+    </h1>
+    <input type="text" id="mySearch" onkeyup="myFunction()" placeholder="Search..." title="Type in a dish">
+    <ul id="myMenu">
+        <!-- Pizzas -->
+        <div class="category-heading">Pizzas</div>
+        <li><a href="#"><span>Italian Supreme Cheese Burst</span><span class="quantity-controls"><button onclick="updateCart('Italian Supreme Cheese Burst', 350, -1)">-</button><span>350/-</span><button onclick="updateCart('Italian Supreme Cheese Burst', 350, 1)">+</button></span></a></li>
+        <li><a href="#"><span>Mexican Spicy Fiesta</span><span class="quantity-controls"><button onclick="updateCart('Mexican Spicy Fiesta', 370, -1)">-</button><span>370/-</span><button onclick="updateCart('Mexican Spicy Fiesta', 370, 1)">+</button></span></a></li>
+        <li><a href="#"><span>BBQ Chicken Delight</span><span class="quantity-controls"><button onclick="updateCart('BBQ Chicken Delight', 400, -1)">-</button><span>400/-</span><button onclick="updateCart('BBQ Chicken Delight', 400, 1)">+</button></span></a></li>
+        <li><a href="#"><span>Mediterranean Veggie Paradise</span><span class="quantity-controls"><button onclick="updateCart('Mediterranean Veggie Paradise', 360, -1)">-</button><span>360/-</span><button onclick="updateCart('Mediterranean Veggie Paradise', 360, 1)">+</button></span></a></li>
+
+        <!-- Pastas -->
+        <div class="category-heading">Pastas</div>
+        <li><a href="#"><span>Alfredo Creamy Pasta</span><span class="quantity-controls"><button onclick="updateCart('Alfredo Creamy Pasta', 250, -1)">-</button><span>250/-</span><button onclick="updateCart('Alfredo Creamy Pasta', 250, 1)">+</button></span></a></li>
+        <li><a href="#"><span>Arrabbiata Spicy Delight</span><span class="quantity-controls"><button onclick="updateCart('Arrabbiata Spicy Delight', 270, -1)">-</button><span>270/-</span><button onclick="updateCart('Arrabbiata Spicy Delight', 270, 1)">+</button></span></a></li>
+        <li><a href="#"><span>Cheesy Macaroni & Veg</span><span class="quantity-controls"><button onclick="updateCart('Cheesy Macaroni & Veg', 240, -1)">-</button><span>240/-</span><button onclick="updateCart('Cheesy Macaroni & Veg', 240, 1)">+</button></span></a></li>
+        <li><a href="#"><span>Mexican Chili Pasta</span><span class="quantity-controls"><button onclick="updateCart('Mexican Chili Pasta', 260, -1)">-</button><span>260/-</span><button onclick="updateCart('Mexican Chili Pasta', 260, 1)">+</button></span></a></li>
+
+        <!-- Pizzas -->
+        <div class="category-heading">Pizzas</div>
+        <li><a href="#"><span>Margarita Double Cheese</span><span class="quantity-controls"><button onclick="updateCart('Margarita Double Cheese', 250, -1)">-</button><span>250/-</span><button onclick="updateCart('Margarita Double Cheese', 250, 1)">+</button></span></a></li>
+        <li><a href="#"><span>Veggie Feast Country</span><span class="quantity-controls"><button onclick="updateCart('Veggie Feast Country', 350, -1)">-</button><span>350/-</span><button onclick="updateCart('Veggie Feast Country', 350, 1)">+</button></span></a></li>
+        <li><a href="#"><span>Chicken Tikka</span><span class="quantity-controls"><button onclick="updateCart('Chicken Tikka', 400, -1)">-</button><span>400/-</span><button onclick="updateCart('Chicken Tikka', 400, 1)">+</button></span></a></li>
+      
+        <!-- Sandwiches -->
+        <div class="category-heading">Sandwiches</div>
+        <li><a href="#"><span>Veg Cheese / Omelette Cheese</span><span class="quantity-controls"><button onclick="updateCart('Veg Cheese / Omelette Cheese', 60, -1)">-</button><span>60/-</span><button onclick="updateCart('Veg Cheese / Omelette Cheese', 60, 1)">+</button></span></a></li>
+        <li><a href="#"><span>Veg Bombay / Corn Cheese</span><span class="quantity-controls"><button onclick="updateCart('Veg Bombay / Corn Cheese', 80, -1)">-</button><span>80/-</span><button onclick="updateCart('Veg Bombay / Corn Cheese', 80, 1)">+</button></span></a></li>
+        <li><a href="#"><span>Aloo Tikki / Veg Kabab</span><span class="quantity-controls"><button onclick="updateCart('Aloo Tikki / Veg Kabab', 80, -1)">-</button><span>80/-</span><button onclick="updateCart('Aloo Tikki / Veg Kabab', 80, 1)">+</button></span></a></li>
+        <li><a href="#"><span>Veg-Falafel / Mexican Patty</span><span class="quantity-controls"><button onclick="updateCart('Veg-Falafel / Mexican Patty', 80, -1)">-</button><span>80/-</span><button onclick="updateCart('Veg-Falafel / Mexican Patty', 80, 1)">+</button></span></a></li>
+        <li><a href="#"><span>BBQ Paneer / Chicken</span><span class="quantity-controls"><button onclick="updateCart('BBQ Paneer / Chicken', 100, -1)">-</button><span>100/-</span><button onclick="updateCart('BBQ Paneer / Chicken', 100, 1)">+</button></span></a></li>
+      
+        <!-- Momos -->
+        <div class="category-heading">Momos</div>
+        <li><a href="#"><span>Veg Steamed Momos</span><span class="quantity-controls"><button onclick="updateCart('Veg Steamed Momos', 80, -1)">-</button><span>80/-</span><button onclick="updateCart('Veg Steamed Momos', 80, 1)">+</button></span></a></li>
+        <li><a href="#"><span>Chicken / Paneer Steamed Momos</span><span class="quantity-controls"><button onclick="updateCart('Chicken / Paneer Steamed Momos', 100, -1)">-</button><span>100/-</span><button onclick="updateCart('Chicken / Paneer Steamed Momos', 100, 1)">+</button></span></a></li>
+        <li><a href="#"><span>Tandoori Momos</span><span class="quantity-controls"><button onclick="updateCart('Tandoori Momos', 100, -1)">-</button><span>100/-</span><button onclick="updateCart('Tandoori Momos', 100, 1)">+</button></span></a></li>
+        <li><a href="#"><span>Chili Garlic Momos</span><span class="quantity-controls"><button onclick="updateCart('Chili Garlic Momos', 110, -1)">-</button><span>110/-</span><button onclick="updateCart('Chili Garlic Momos', 110, 1)">+</button></span></a></li>
+        <li><a href="#"><span>Fried Momos</span><span class="quantity-controls"><button onclick="updateCart('Fried Momos', 100, -1)">-</button><span>100/-</span><button onclick="updateCart('Fried Momos', 100, 1)">+</button></span></a></li>
+        <li><a href="#"><span>BBQ Momos</span><span class="quantity-controls"><button onclick="updateCart('BBQ Momos', 110, -1)">-</button><span>110/-</span><button onclick="updateCart('BBQ Momos', 110, 1)">+</button></span></a></li>
+      
+        <!-- Wraps -->
+        <div class="category-heading">Wraps</div>
+        <li><a href="#"><span>Aloo Tikki Wrap / Egg Wrap</span><span class="quantity-controls"><button onclick="updateCart('Aloo Tikki Wrap / Egg Wrap', 80, -1)">-</button><span>80/-</span><button onclick="updateCart('Aloo Tikki Wrap / Egg Wrap', 80, 1)">+</button></span></a></li>
+        <li><a href="#"><span>Veggie Wrap</span><span class="quantity-controls"><button onclick="updateCart('Veggie Wrap', 90, -1)">-</button><span>90/-</span><button onclick="updateCart('Veggie Wrap', 90, 1)">+</button></span></a></li>
+        <li><a href="#"><span>Aloo Achari Wrap</span><span class="quantity-controls"><button onclick="updateCart('Aloo Achari Wrap', 90, -1)">-</button><span>90/-</span><button onclick="updateCart('Aloo Achari Wrap', 90, 1)">+</button></span></a></li>
+        <li><a href="#"><span>Mexican Patty / Falafel Wrap</span><span class="quantity-controls"><button onclick="updateCart('Mexican Patty / Falafel Wrap', 90, -1)">-</button><span>90/-</span><button onclick="updateCart('Mexican Patty / Falafel Wrap', 90, 1)">+</button></span></a></li>
+        <li><a href="#"><span>Peri Peri Egg Wrap</span><span class="quantity-controls"><button onclick="updateCart('Peri Peri Egg Wrap', 90, -1)">-</button><span>90/-</span><button onclick="updateCart('Peri Peri Egg Wrap', 90, 1)">+</button></span></a></li>
+      
+        <!-- Shakes -->
+        <div class="category-heading">Shakes</div>
+        <li><a href="#"><span>Chocolate Shake</span><span class="quantity-controls"><button onclick="updateCart('Chocolate Shake', 150, -1)">-</button><span>150/-</span><button onclick="updateCart('Chocolate Shake', 150, 1)">+</button></span></a></li>
+        <li><a href="#"><span>Oreo Shake</span><span class="quantity-controls"><button onclick="updateCart('Oreo Shake', 180, -1)">-</button><span>180/-</span><button onclick="updateCart('Oreo Shake', 180, 1)">+</button></span></a></li>
+      </ul>
+      
+
+<div id="cart" style="display: none;">
+  <h3>Cart</h3>
+  <div id="cartItems"></div>
+  <div id="totalAmount"><strong>Total: </strong>0/-</div>
+</div>
+
+<script>
+let cart = {}; // Cart to store items and their quantities
+let total = 0; // Total price
+
+function myFunction() {
+  const input = document.getElementById("mySearch").value.toUpperCase();
+  const ul = document.getElementById("myMenu");
+  const li = ul.getElementsByTagName("li");
+  const categoryHeadings = document.getElementsByClassName("category-heading");
+
+  for (let i = 0; i < li.length; i++) {
+    const a = li[i].getElementsByTagName("a")[0];
+    if (a.innerHTML.toUpperCase().indexOf(input) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
+  }
+
+  const headingsDisplay = input !== "" ? "none" : "block";
+  for (let i = 0; i < categoryHeadings.length; i++) {
+    categoryHeadings[i].style.display = headingsDisplay;
+  }
+}
+
+function updateCart(item, price, quantityChange) {
+  if (!cart[item]) {
+    cart[item] = { price: price, quantity: 0 };
+  }
+  cart[item].quantity += quantityChange;
+
+  if (cart[item].quantity < 0) {
+    cart[item].quantity = 0;
+  }
+
+  updateCartDisplay();
+}
+
+function updateCartDisplay() {
+  const cartItems = document.getElementById("cartItems");
+  const totalAmount = document.getElementById("totalAmount");
+
+  cartItems.innerHTML = "";
+  total = 0;
+
+  for (const [item, details] of Object.entries(cart)) {
+    if (details.quantity > 0) {
+      const cartItemDiv = document.createElement("div");
+      cartItemDiv.className = "cart-item";
+      cartItemDiv.innerHTML = `<span>${item} x${details.quantity}</span><span>${details.price * details.quantity}/-</span>`;
+      cartItems.appendChild(cartItemDiv);
+      total += details.price * details.quantity;
+    }
+  }
+
+  totalAmount.innerHTML = `<strong>Total: </strong>${total}/-`;
+  document.getElementById("cart").style.display = total > 0 ? "block" : "none";
+}
+
+function toggleCart() {
+  const cartElement = document.getElementById("cart");
+  cartElement.style.display = cartElement.style.display === "none" ? "block" : "none";
+}
+</script>
+    </section>
+
+</body>
+</html>

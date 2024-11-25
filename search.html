@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+/* General Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Body Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Search Bar Styling */
+#myInput {
+    background-image: url('/css/searchicon.png');
+    background-position: 10px center;
+    background-repeat: no-repeat;
+    width: 100%;
+    max-width: 500px;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 20px auto;
+    display: block;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    transform: translateY(-50%);
+}
+
+#myInput:focus {
+    border: 1px solid #ff001e;
+    outline: none;
+    box-shadow: 0 2px 8px #ff001e;
+}
+
+/* Search Results List Styling */
+#myUL {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: #f8ebe0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: none; /* Initially hide the list */
+}
+
+#myUL li {
+    border-bottom: 1px solid #ddd;
+    padding: 12px 16px;
+    font-size: 16px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+#myUL li:last-child {
+    border-bottom: none;
+}
+
+#myUL li:hover {
+    background-color:#f8ebe0;
+    cursor: pointer;
+}
+
+#myUL li a {
+    text-decoration: none;
+    color: #de8957;
+    display: block;
+    font-weight: bold;
+}
+
+#myUL li a:hover {
+    color: #8f3f11;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+    #myInput {
+        width: 90%;
+    }
+
+    #myUL {
+        width: 90%;
+    }
+}
+
+  </style>
+</head>
+<body background="images/M1.png">
+ 
+  <input type="text" id="myInput" onkeyup="filterMenu()" placeholder="Search for food items..." title="Type in a name">
+
+  <ul id="myUL">
+    <!-- Chatkaara Menu Items -->
+    <li><a href="#">Masala Chaap - Chatkaara</a></li>
+    <li><a href="#">Punjabi Chaap - Chatkaara</a></li>
+    <li><a href="#">Achari Chaap - Chatkaara</a></li>
+    <li><a href="#">Tandoori Chaap - Chatkaara</a></li>
+    <li><a href="#">Malai Chaap - Chatkaara</a></li>
+    <li><a href="#">Afghani Chaap - Chatkaara</a></li>
+    <li><a href="#">Lemon Chaap - Chatkaara</a></li>
+    <li><a href="#">Haryali Chaap - Chatkaara</a></li>
+    <li><a href="#">Pudina Chaap - Chatkaara</a></li>
+    <li><a href="#">Spl. Chatkara Chaap - Chatkaara</a></li>
+    <li><a href="#">Devil Chaap - Chatkaara</a></li>
+    <li><a href="#">Super Spicy Chaap - Chatkaara</a></li>
+    <li><a href="#">Garlic Chaap - Chatkaara</a></li>
+    <li><a href="#">Kali Mirchi Chaap - Chatkaara</a></li>
+    <li><a href="#">Stuff Chaap - Chatkaara</a></li>
+    <li><a href="#">Stuff Masala Chaap - Chatkaara</a></li>
+    <li><a href="#">Veg Chicken Tikka - Chatkaara</a></li>
+    <li><a href="#">Veg Fish Tikka - Chatkaara</a></li>
+    <li><a href="#">Veg Masala Kaleji - Chatkaara</a></li>
+    <li><a href="#">Veg Afghani Kaleji - Chatkaara</a></li>
+    <li><a href="#">Paneer Tikka - Chatkaara</a></li>
+    <li><a href="#">Achari Paneer Tikka - Chatkaara</a></li>
+    <li><a href="#">Malai Paneer Tikka - Chatkaara</a></li>
+    <li><a href="#">Afghani Paneer Tikka - Chatkaara</a></li>
+    <li><a href="#">Kali Mirchi Tikka - Chatkaara</a></li>
+    <li><a href="#">Mashroom Tikka - Chatkaara</a></li>
+    <li><a href="#">Achari Mashroom - Chatkaara</a></li>
+
+    <!-- Let's Go Live Menu Items -->
+    <li><a href="#">Red Sauce - Let's Go Live</a></li>
+    <li><a href="#">Makhani Sauce - Let's Go Live</a></li>
+    <li><a href="#">Make Your Own Pasta - Let's Go Live</a></li>
+    <li><a href="#">+ Veg. @155 - Let's Go Live</a></li>
+    <li><a href="#">+ Non Veg. @185 - Let's Go Live</a></li>
+    <li><a href="#">Macaroni - Let's Go Live</a></li>
+    <li><a href="#">Penne - Let's Go Live</a></li>
+    <li><a href="#">White Sauce - Let's Go Live</a></li>
+    <li><a href="#">Pink Sauce - Let's Go Live</a></li>
+    <li><a href="#">Fusilli - Let's Go Live</a></li>
+    <li><a href="#">Spaghetti - Let's Go Live</a></li>
+    <li><a href="#">Veg Cheese / Omlette Cheese Sandwich - Let's Go Live</a></li>
+    <li><a href="#">Veg Bombay/Corn Cheese - Let's Go Live</a></li>
+    <li><a href="#">Aloo Tikki/Veg Kabab - Let's Go Live</a></li>
+    <li><a href="#">Veg-Falafel / Mexican Patty - Let's Go Live</a></li>
+    <li><a href="#">BBQ Paneer / Chicken Sandwich - Let's Go Live</a></li>
+    <li><a href="#">Steamed Momos - Let's Go Live</a></li>
+    <li><a href="#">Veg Chicken/Paneer Momos - Let's Go Live</a></li>
+    <li><a href="#">Tandoori Momos - Let's Go Live</a></li>
+    <li><a href="#">Chili Garlic Momos - Let's Go Live</a></li>
+    <li><a href="#">Fried Momos - Let's Go Live</a></li>
+    <li><a href="#">Aloo Tikki Wrap / Egg Wrap - Let's Go Live</a></li>
+    <li><a href="#">Veggie Wrap / Aloo Achari Wrap - Let's Go Live</a></li>
+    <li><a href="#">Mexican Patty/Falafel Wrap - Let's Go Live</a></li>
+    <li><a href="#">Peri Peri Peri Peri Egg Wrap - Let's Go Live</a></li>
+    <li><a href="#">BBQ Momos - Let's Go Live</a></li>
+    <li><a href="#">Paneer Tikka / Chicken Tikka - Let's Go Live</a></li>
+    <li><a href="#">Chicken Salami/Sausage Wrap - Let's Go Live</a></li>
+    <li><a href="#">Lebanese Chicken / Paneer Wrap - Let's Go Live</a></li>
+    <li><a href="#">Afghani Momos - Let's Go Live</a></li>
+    <li><a href="#">BBQ Paneer / Chicken Wrap - Let's Go Live</a></li>
+    <li><a href="#">Mexican Paneer / Chicken Wrap - Let's Go Live</a></li>
+    <li><a href="#">Chili Garlic Poppers - Let's Go Live</a></li>
+    <li><a href="#">Garlic Bread Cheese / Chili Cheese - Let's Go Live</a></li>
+    <li><a href="#">Mexican Wrap - Let's Go Live</a></li>
+    <li><a href="#">Cheesy Baked Momos - Let's Go Live</a></li>
+    <li><a href="#">Kurkure Momos - Let's Go Live</a></li>
+    <li><a href="#">Chili Garlic- - Let's Go Live</a></li>
+    <li><a href="#">Szechwan Paneer / Chicken Wrap - Let's Go Live</a></li>
+    <li><a href="#">Basil Pesto Paneer / Chicken - Let's Go Live</a></li>
+    <li><a href="#">Salted/Peri Peri French Fries - Let's Go Live</a></li>
+    <li><a href="#">Chili Cheese Garlic Bread - Let's Go Live</a></li>
+    <li><a href="#">Maggi Noodles - Let's Go Live</a></li>
+    <li><a href="#">Plain/Veg/Veg Cheese Maggi - Let's Go Live</a></li>
+    <li><a href="#">Chicken/Chicken Cheese Maggi - Let's Go Live</a></li>
+    <li><a href="#">Peri Peri Maggi - Veg / Chicken - Let's Go Live</a></li>
+    <li><a href="#">Paneer Tikka Pasta - Let's Go Live</a></li>
+    <li><a href="#">Cheesy Fries with Chicken - Let's Go Live</a></li>
+    <li><a href="#">Loaded Chicken / Loaded Paneer - Let's Go Live</a></li>
+    <li><a href="#">African Paneer / Chicken - Let's Go Live</a></li>
+    <li><a href="#">Cheese Poppers - Let's Go Live</a></li>
+    <li><a href="#">Szechwan Noodles - Let's Go Live</a></li>
+    <li><a href="#">Peri Peri Paneer / Chicken - Let's Go Live</a></li>
+    <li><a href="#">Paneer Bhurji / Chicken Keema - Let's Go Live</a></li>
+    <li><a href="#">Cheesy Fries / Pizza Pockets - Let's Go Live</a></li>
+    <li><a href="#">Cheesy Peri Peri - Let's Go Live</a></li>
+    <li><a href="#">Tandoori Maggi - Veg / Chicken - Let's Go Live</a></li>
+    <li><a href="#">Butter Chicken / Grilled Chicken - Let's Go Live</a></li>
+    <li><a href="#">BBQ Chicken Omlette - Let's Go Live</a></li>
+    <li><a href="#">Peri Peri Chicken Omlette - Let's Go Live</a></li>
+    <li><a href="#">Mexican Falafel Patty Taco - Let's Go Live</a></li>
+    <li><a href="#">Pasta Bolognese Sauce - Let's Go Live</a></li>
+    <li><a href="#">Chicken Tikka Pasta - Let's Go Live</a></li>
+    <li><a href="#">Butter Paneer Pasta - Let's Go Live</a></li>
+    <li><a href="#">Paneer Tikka Pasta - Let's Go Live</a></li>
+    <li><a href="#">Chicken Cheese Omlette - Let's Go Live</a></li>
+    <li><a href="#">Chicken Strips - Let's Go Live</a></li>
+    <li><a href="#">Cheese Jalapeno - Let's Go Live</a></li>
+    <li><a href="#">Mac N Cheese - Let's Go Live</a></li>
+    <li><a href="#">Mojito - Let's Go Live</a></li>
+    <li><a href="#">Hazelnut Cold Coffee - Let's Go Live</a></li>
+    <li><a href="#">Oreo / Chocolate / Brownie Shake - Let's Go Live</a></li>
+    <li><a href="#">Malai Paneer / Chicken - Let's Go Live</a></li>
+    <li><a href="#">Spicy Chicken - Let's Go Live</a></li>
+    <li><a href="#">Soda Fresh Lime / Masala Nimbu - Let's Go Live</a></li>
+    <li><a href="#">Chicken/Paneer Club - Let's Go Live</a></li>
+    <li><a href="#">Chili Garlic Poppers - Let's Go Live</a></li>
+  </ul>
+
+  <script>
+    function filterMenu() {
+      var input, filter, ul, li, a, i, txtValue;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      ul = document.getElementById("myUL");
+      li = ul.getElementsByTagName("li");
+
+      if (filter.length > 0) {
+        ul.style.display = "block"; // Show the list when search query exists
+      } else {
+        ul.style.display = "none"; // Hide the list when search is cleared
+      }
+
+      for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          li[i].style.display = "";
+        } else {
+          li[i].style.display = "none";
+        }
+      }
+    }
+  </script>
+
+</body>
+</html>
